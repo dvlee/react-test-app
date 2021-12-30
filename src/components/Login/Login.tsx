@@ -29,7 +29,7 @@ export const Login: ComponentType = () => {
   });
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="xs">
       <Card sx={{ p: 6, mt: 10 }}>
         <form onSubmit={formik.handleSubmit}>
           <Typography textAlign="center" variant="h4" mb={3}>
