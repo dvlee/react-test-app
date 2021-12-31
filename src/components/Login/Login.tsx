@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import { ComponentType } from "react";
+import { useAuth } from "../../hooks/useAuth";
 import {
   FIELD_LOGIN,
   FIELD_PASSWORD,
@@ -17,8 +18,12 @@ import useStyles from "./styles";
 
 export const Login: ComponentType = () => {
   const classes = useStyles();
+  const { login } = useAuth();
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    login(formik.values);
+  };
+
   const formik = useFormik({
     initialValues: {
       [FIELD_LOGIN]: "",
@@ -47,7 +52,12 @@ export const Login: ComponentType = () => {
               sx={{ mb: 3 }}
             />
             <Stack alignItems="flex-end">
-              <Button variant="contained" color="primary" size="large">
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                type="submit"
+              >
                 Log in
               </Button>
             </Stack>

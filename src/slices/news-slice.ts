@@ -1,15 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface initialStateProps {
-  isLoading: boolean;
-  error: string | null;
-  list: Record<string, any> | null;
+  list: {
+    isLoading: boolean;
+    error: string | null;
+    data: Record<string, any>[] | null;
+    meta: Record<string, any> | null;
+  };
+  post: {
+    isLoading: boolean;
+    error: string | null;
+    data: Record<string, any> | null;
+  };
 }
 
 const initialState: initialStateProps = {
-  isLoading: false,
-  error: null,
-  list: null,
+  list: {
+    isLoading: false,
+    error: null,
+    data: null,
+    meta: null,
+  },
+  post: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
 };
 
 export const { actions: NewsActions, reducer: NewsReducer } = createSlice({
@@ -17,24 +33,49 @@ export const { actions: NewsActions, reducer: NewsReducer } = createSlice({
   initialState,
   reducers: {
     setNewsRequest: (state) => {
-      state = {
+      state.list = {
         isLoading: true,
         error: null,
-        list: null,
+        data: null,
+        meta: null,
       };
     },
-    setNewsSuccess: (state, action) => {
-      state = {
+    setNewsSuccess: (state, { payload }) => {
+      state.list = {
         isLoading: false,
         error: null,
-        list: action.payload,
+        data: payload.data,
+        meta: payload.meta,
       };
     },
-    setNewsFailure: (state, action) => {
-      state = {
+    setNewsFailure: (state, { payload }) => {
+      state.list = {
+        isLoading: false,
+        error: payload,
+        data: null,
+        meta: null,
+      };
+    },
+
+    setNewsPostRequest: (state) => {
+      state.post = {
+        isLoading: true,
+        error: null,
+        data: null,
+      };
+    },
+    setNewsPostSuccess: (state, { payload }) => {
+      state.post = {
         isLoading: false,
         error: null,
-        list: action.payload,
+        data: payload.data,
+      };
+    },
+    setNewsPostFailure: (state, { payload }) => {
+      state.post = {
+        isLoading: false,
+        error: null,
+        data: payload,
       };
     },
   },

@@ -8,6 +8,13 @@ const options = {
 const useStyles = makeStyles(
   (theme: Theme) => ({
     root: {},
+    navBtn: {
+      color: theme.palette.common.white,
+      "&.active": {
+        backgroundColor: theme.palette.common.white,
+        color: theme.palette.primary.main,
+      },
+    },
   }),
   options
 );

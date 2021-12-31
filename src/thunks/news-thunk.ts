@@ -1,15 +1,37 @@
 import { Dispatch } from "redux";
+import { ApiFetch } from "../http/api-config";
 import { NewsActions } from "../slices/news-slice";
+import { API_ENDPOINTS } from "./../constants/api-endpoints";
 
-export const getNews = (page?: number) => async (dispatch: Dispatch) => {
-  dispatch(NewsActions.setNewsRequest());
+const { POSTS, POST } = API_ENDPOINTS.NEWS;
+
+const {
+  setNewsFailure,
+  setNewsPostFailure,
+  setNewsPostRequest,
+  setNewsPostSuccess,
+  setNewsRequest,
+  setNewsSuccess,
+} = NewsActions;
+
+export const getNews =
+  (params?: Record<string, any>) => async (dispatch: Dispatch) => {
+    dispatch(setNewsRequest());
+    try {
+      const apiUrl = [POSTS, new URLSearchParams(params).toString()].join("?");
+      const data = await ApiFetch(apiUrl);
+      dispatch(setNewsSuccess(data));
+    } catch (error) {
+      dispatch(setNewsFailure(error));
+    }
+  };
+
+export const getPost = (id: string | number) => async (dispatch: Dispatch) => {
+  dispatch(setNewsPostRequest());
   try {
-    const pathParams = page && page > 1 ? "?page=" + page : "";
-    const data = await fetch(
-      "https://gorest.co.in/public/v1/posts" + pathParams
-    );
-    dispatch(NewsActions.setNewsSuccess(data));
+    const data = await ApiFetch(POST.replace(":id", id.toString()));
+    dispatch(setNewsPostSuccess(data));
   } catch (error) {
-    dispatch(NewsActions.setNewsFailure(error));
+    dispatch(setNewsPostFailure(error));
   }
 };
