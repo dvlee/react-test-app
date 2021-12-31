@@ -14,10 +14,8 @@ import {
   FIELD_PASSWORD,
   LoginValidationSchema,
 } from "./LoginValidationSchema";
-import useStyles from "./styles";
 
 export const Login: ComponentType = () => {
-  const classes = useStyles();
   const { login } = useAuth();
 
   const handleSubmit = () => {

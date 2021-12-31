@@ -9,13 +9,6 @@ export const Header: ComponentType = () => {
   const classes = useStyles();
   const { user } = useAuth();
 
-  const pages = [
-    { label: "Home", path: "/", loggedIn: null },
-    { label: "News", path: "/news", loggedIn: null },
-    { label: "Profile", path: "/profile", loggedIn: true },
-    { label: "Login", path: "/login", loggedIn: false },
-  ];
-
   return (
     <AppBar className={classes.root} position="static" sx={{ py: 2 }}>
       <Container>
