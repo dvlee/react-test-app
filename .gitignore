@@ -24,3 +24,4 @@ yarn-error.log*
 
 generate-react-cli.json
 /templates
+/.vscode
