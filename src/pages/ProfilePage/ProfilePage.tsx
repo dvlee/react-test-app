@@ -15,7 +15,7 @@ export const ProfilePage: ComponentType = () => {
   }, [user]);
 
   return (
-    <BaseLayout title="Profile">
+    <BaseLayout title="Профиль">
       <Profile />
     </BaseLayout>
   );

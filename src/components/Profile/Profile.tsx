@@ -25,7 +25,7 @@ export const Profile: ComponentType = () => {
             sx={{ mt: "auto" }}
             onClick={logout}
           >
-            Logout
+            Выйти
           </Button>
         </Stack>
       </Stack>

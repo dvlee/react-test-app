@@ -51,7 +51,7 @@ export const News: ComponentType = () => {
             </Grid>
           ))}
       </Grid>
-      <Stack direction="row" alignItems="center" justifyContent="center">
+      <Stack direction="row" alignItems="center" justifyContent="center" mt={4}>
         <Pagination
           page={parseInt(page)}
           count={pages}

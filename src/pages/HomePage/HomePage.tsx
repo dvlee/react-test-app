@@ -4,7 +4,7 @@ import { BaseLayout } from "../../layouts/BaseLayout/BaseLayout";
 
 export const HomePage: ComponentType = () => {
   return (
-    <BaseLayout title="HomePage">
+    <BaseLayout title="Главная">
       <Home />
     </BaseLayout>
   );

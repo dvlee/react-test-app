@@ -36,7 +36,7 @@ export const Login: ComponentType = () => {
       <Card sx={{ p: 6, mt: 10 }}>
         <form onSubmit={formik.handleSubmit}>
           <Typography textAlign="center" variant="h4" mb={3}>
-            Login
+            Авторизация
           </Typography>
           <Stack>
             <TextField

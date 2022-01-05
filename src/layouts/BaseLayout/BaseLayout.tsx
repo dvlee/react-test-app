@@ -11,7 +11,7 @@ export const BaseLayout: ComponentType<BaseLayoutProps> = ({
   children,
 }) => {
   return (
-    <Box>
+    <Box pb={10}>
       <Header />
       <Container>
         {title && (
